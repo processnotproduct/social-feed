@@ -153,12 +153,13 @@ section.intro hr, .intro hr, .intro.stripe hr {
 
 .social-feed-element .media-object {
     box-shadow: 0px 0px 4px 0px lightgrey;
+    border: 1px solid white;
     margin: 4px;
 }
 
 .title-bar {
   background-color: grey;
-  box-shadow: 0px 0px 10px 2px grey;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
   border-bottom: 1px solid lightgrey;
   z-index: 1;
   position: relative;
