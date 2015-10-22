@@ -90,17 +90,17 @@ section.intro hr, .intro hr, .intro.stripe hr {
 .field-right {
   width: 10%;
   height: 41px;
-  /*float: right;*/
-  /*border-top-left-radius: 0px;*/
-  /*border-bottom-left-radius: 0px;*/
-  }
+}
 
 .field-left {
-  width: 80%;
-  float: left;
-  border-right: none;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px; }
+  display:none;
+  /*width: 80%;*/
+  /*float: left;*/
+  /*border-right: none;*/
+  /*border-top-right-radius: 0px;*/
+  /*border-bottom-right-radius: 0px;*/
+  
+}
 
 .referral {
   text-align: left; }
@@ -122,8 +122,50 @@ section.intro hr, .intro hr, .intro.stripe hr {
 }
 
 .fa {
-    font-size: 20px !important;
+    /*font-size: 20px !important;*/
     vertical-align: middle;
+}
+
+.fa.pull-right {
+    float: right;
+    margin-top: 5px;
+    color: #ddd;
+    font-size: 28px;
+}
+
+.social-feed-element .content {
+    padding: 10px 15px !important;
+}
+
+.social-feed-element .media-body > p {
+    margin-top: 8px;
+}
+
+.social-feed-element .author-title {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.social-feed-element .muted {
+    color: #bbb !important;
+    margin-left: 5px;
+}
+
+.social-feed-element .media-object {
+    box-shadow: 0px 0px 4px 0px lightgrey;
+    margin: 4px;
+}
+
+.title-bar {
+  background-color: grey;
+  box-shadow: 0px 0px 10px 2px grey;
+  border-bottom: 1px solid lightgrey;
+  z-index: 1;
+  position: relative;
+}
+
+.content-bottom {
+  border-top: 1px solid lightgrey;
 }
 
 @media screen and (max-width: 767px) {
@@ -132,20 +174,24 @@ section.intro hr, .intro hr, .intro.stripe hr {
         width: 80%;
     }
     .social-feed-element {
-        width: 95%;
-        float: none;
-        margin-right: 2.5% !important;
-        margin-left: 2.5% !important;
+      width: 95%;
+      float: none;
+      margin-right: 2.5% !important;
+      margin-left: 2.5% !important;
     }
     .social-feed-element:nth-child(2) {
-        margin-top: 25px;
+      margin-top: 25px;
+    }
+    .field-right {
+      width: 20%;
+      height: 41px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .container {
-        display: inline-block;
-        width: 100%;
+      display: inline-block;
+      width: 100%;
     }
 }
 
