@@ -88,7 +88,7 @@ if (typeof Object.create !== 'function') {
             shorten: function(string) {
                 string = $.trim(string);
                 if (string.length > options.length) {
-                    return jQuery.trim(string).substring(0, options.length).split(" ").slice(0, -1).join(" ") + "...";
+                    return jQuery.trim(string).substring(0, options.length).split(" ").slice(0, -1).join(" ") + " ...";
                 } else {
                     return string;
                 }
@@ -468,6 +468,7 @@ if (typeof Object.create !== 'function') {
                             var id = account.substr(1);
                             url = Feed.instagram.api + 'users/' + id + '/?client_id=' + options.instagram.client_id + '&' + 'count=' + options.instagram.limit + '&callback=?';
                             Utility.request(url, Feed.instagram.utility.getUsers);
+                            break;
                         default:
                     }
                 },

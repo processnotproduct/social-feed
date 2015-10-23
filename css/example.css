@@ -128,17 +128,17 @@ section.intro hr, .intro hr, .intro.stripe hr {
 
 .fa.pull-right {
     float: right;
-    margin-top: 5px;
+    margin-top: 6px;
     color: #ddd;
     font-size: 28px;
 }
 
-.social-feed-element .content {
-    padding: 10px 15px !important;
+.social-feed-element a:hover, .social-feed-element a:active {
+    text-decoration: none !important;
 }
 
 .social-feed-element .media-body > p {
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .social-feed-element .author-title {
@@ -163,10 +163,27 @@ section.intro hr, .intro hr, .intro.stripe hr {
   border-bottom: 1px solid lightgrey;
   z-index: 1;
   position: relative;
+  padding: 5px 15px !important;
 }
 
 .content-bottom {
   border-top: 1px solid lightgrey;
+  padding: 20px 15px !important;
+}
+
+.read-more {
+  padding: 15px 0px;
+  text-align: center;
+  border-top: 1px solid #aaa;
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+  transition: 0.25s;
+  color:#999;
+}
+
+.read-more:hover {
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+  background-color: #eee;
+  color:#555;
 }
 
 @media screen and (max-width: 767px) {
