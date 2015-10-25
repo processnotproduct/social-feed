@@ -1,56 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta charset="utf-8" />
-    <!-- Social-feed css -->
-    <link href="css/example.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.socialfeed.css" rel="stylesheet" type="text/css">
-    <!-- font-awesome for social network icons -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-    <!--<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>-->
-    <!-- This style is needed only for the plugin demo page. Do not use it in your projects -->
-</head>
-
-<body>
-    <section class="intro">
-        <div class="container">
-            <h1>#59in59</h1>
-        </div>
-    </section>
-    <section class="stripe">
-        <div class="container field">
-            <input type="text" class="input field-left" value="@59in59, #59in59" id="query">
-            <p>Here's a stream of some of our content on social media that is aggregated using the hashtag #59in59.</p>
-            <button class='button field-right' id="button-update"><i class="fa fa-refresh"></i>
-            </button>
-        </div>
-    </section>
-    <section class="feed">
-        <div class="container">
-            <div class="social-feed-container">
-            </div>
-        </div>
-    </section>
-    <section class="stripe">
-        <div class="container field referral">
-            <p>If you like <i>59in59</i>, you can support us by Blah BLAH blah</p>
-        </div>
-    </section>
-    <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Codebird.js - required for TWITTER -->
-    <script src="bower_components/codebird-js/codebird.js"></script>
-    <!-- doT.js for rendering templates -->
-    <script src="bower_components/doT/doT.min.js"></script>
-    <!-- Moment.js for showing "time ago" -->
-    <script src="bower_components/moment/min/moment.min.js"></script>
-    <!-- Social-feed js -->
-    <script src="js/jquery.socialfeed.js"></script>
-    <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
         var updateFeed = function() {
             var initialQuery = $('#query').val();
@@ -115,7 +63,3 @@
         });
 
     });
-    </script>
-</body>
-
-</html>

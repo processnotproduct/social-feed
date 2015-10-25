@@ -12,7 +12,7 @@ if (typeof Object.create !== 'function') {
 
         var defaults = {
             plugin_folder: '', // a folder in which the plugin is located (with a slash in the end)
-            template: 'template.html', // a path to the template file
+            template: './template.html', // a path to the template file
             show_media: false, // show images of attachments if available
             media_min_width: 300,
             length: 500 // maximum length of post message shown
@@ -23,9 +23,9 @@ if (typeof Object.create !== 'function') {
             template,
             social_networks = ['facebook', 
                                'instagram', 
-                              // 'vk', 
-                               'google', 
-                              // 'blogspot', 
+                               // 'vk', 
+                               // 'google', 
+                               // 'blogspot', 
                                'twitter'],
             posts_to_load_count = 0,
             loaded_post_count = 0;
@@ -211,7 +211,7 @@ if (typeof Object.create !== 'function') {
             twitter: {
                 posts: [],
                 loaded: false,
-                api: 'http://api.tweecool.com/',
+                api: 'https://api.tweecool.com/',
 
                 getData: function(account) {
 
@@ -380,72 +380,72 @@ if (typeof Object.create !== 'function') {
                     }
                 }
             },
-            google: {
-                posts: [],
-                loaded: false,
-                api: 'https://www.googleapis.com/plus/v1/',
-                getData: function(account) {
-                    var request_url;
-                    switch (account[0]) {
-                        case '#':
-                            var hashtag = account.substr(1);
-                            request_url = Feed.google.api + 'activities?query=' + hashtag + '&key=' + options.google.access_token + '&maxResults=' + options.google.limit;
-                            Utility.get_request(request_url, Feed.google.utility.getPosts);
-                            break;
-                        case '@':
-                            var username = account.substr(1);
-                            request_url = Feed.google.api + 'people/' + username + '/activities/public?key=' + options.google.access_token + '&maxResults=' + options.google.limit;
-                            Utility.get_request(request_url, Feed.google.utility.getPosts);
-                            break;
-                        default:
-                    }
-                },
-                utility: {
-                    getPosts: function(json) {
-                        if (json.items) {
-                            $.each(json.items, function(i) {
-                                var post = new SocialFeedPost('google', Feed.google.utility.unifyPostData(json.items[i]));
-                                post.render();
-                            });
-                        }
-                    },
-                    unifyPostData: function(element) {
-                        var post = {};
+            // google: {
+            //     posts: [],
+            //     loaded: false,
+            //     api: 'https://www.googleapis.com/plus/v1/',
+            //     getData: function(account) {
+            //         var request_url;
+            //         switch (account[0]) {
+            //             case '#':
+            //                 var hashtag = account.substr(1);
+            //                 request_url = Feed.google.api + 'activities?query=' + hashtag + '&key=' + options.google.access_token + '&maxResults=' + options.google.limit;
+            //                 Utility.get_request(request_url, Feed.google.utility.getPosts);
+            //                 break;
+            //             case '@':
+            //                 var username = account.substr(1);
+            //                 request_url = Feed.google.api + 'people/' + username + '/activities/public?key=' + options.google.access_token + '&maxResults=' + options.google.limit;
+            //                 Utility.get_request(request_url, Feed.google.utility.getPosts);
+            //                 break;
+            //             default:
+            //         }
+            //     },
+            //     utility: {
+            //         getPosts: function(json) {
+            //             if (json.items) {
+            //                 $.each(json.items, function(i) {
+            //                     var post = new SocialFeedPost('google', Feed.google.utility.unifyPostData(json.items[i]));
+            //                     post.render();
+            //                 });
+            //             }
+            //         },
+            //         unifyPostData: function(element) {
+            //             var post = {};
 
-                        post.id = element.id;
-                        post.attachment = '';
-                        post.description = '';
-                        post.dt_create = moment(element.published);
-                        post.author_link = element.actor.url;
-                        post.author_picture = element.actor.image.url;
-                        post.author_name = element.actor.displayName;
+            //             post.id = element.id;
+            //             post.attachment = '';
+            //             post.description = '';
+            //             post.dt_create = moment(element.published);
+            //             post.author_link = element.actor.url;
+            //             post.author_picture = element.actor.image.url;
+            //             post.author_name = element.actor.displayName;
 
-                        if (options.show_media === true) {
-                            if (element.object.attachments) {
-                                $.each(element.object.attachments, function() {
-                                    var image = '';
-                                    if (this.fullImage) {
-                                        image = this.fullImage.url;
-                                    } else {
-                                        if (this.objectType === 'album') {
-                                            if (this.thumbnails && this.thumbnails.length > 0) {
-                                                if (this.thumbnails[0].image) {
-                                                    image = this.thumbnails[0].image.url;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    post.attachment = '<img class="attachment" src="' + image + '"/>';
-                                });
-                            }
-                        }
-                        post.message = element.title;
-                        post.link = element.url;
+            //             if (options.show_media === true) {
+            //                 if (element.object.attachments) {
+            //                     $.each(element.object.attachments, function() {
+            //                         var image = '';
+            //                         if (this.fullImage) {
+            //                             image = this.fullImage.url;
+            //                         } else {
+            //                             if (this.objectType === 'album') {
+            //                                 if (this.thumbnails && this.thumbnails.length > 0) {
+            //                                     if (this.thumbnails[0].image) {
+            //                                         image = this.thumbnails[0].image.url;
+            //                                     }
+            //                                 }
+            //                             }
+            //                         }
+            //                         post.attachment = '<img class="attachment" src="' + image + '"/>';
+            //                     });
+            //                 }
+            //             }
+            //             post.message = element.title;
+            //             post.link = element.url;
 
-                        return post;
-                    }
-                }
-            },
+            //             return post;
+            //         }
+            //     }
+            // },
             instagram: {
                 posts: [],
                 api: 'https://api.instagram.com/v1/',
