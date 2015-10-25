@@ -14,7 +14,7 @@ body {
 }
 
 /*Mods to SSpace*/
-.sqs-block:first-child {
+.sqs-layout .sqs-row .sqs-block:first-child {
   margin-top: 30px !important;
   padding-bottom: 0 !important;
 }
@@ -24,7 +24,7 @@ body {
 }
 
 h3 {
-  margin: 20px 30px;
+  margin: 20px 30px !important;
   font-size: 1.3em;
   text-transform: uppercase;
   font-weight: 400;
@@ -42,9 +42,17 @@ p {
 
 /*sections*/
 .stripe {
-  padding: 20px 0; 
   font-weight: 100;
+}
+
+.stripe-top {
+  padding: 20px 0 40px 0;
   background-image: radial-gradient(ellipse farthest-side at 100% 100%, #85D8CE 10%, #085078 120%);
+}
+
+.stripe-bottom {
+  padding: 20px 0; 
+  background-image: radial-gradient(ellipse farthest-side at 100% 100%, #085078 10%, #85D8CE 120%);
 }
 
 /*buttons & fields*/
@@ -92,15 +100,18 @@ p {
 }
 
 .pull-right {
-  float: right;
   margin-top: 6px !important;
   color: #ddd;
-  font-size: 28px;
+  font-size: 28px !important;
   margin-right: 5px;
 }
 
 .fa-refresh {
   margin-top: 1px !important;
+}
+
+.feed {
+  min-height: 800px;
 }
     
 .social-feed-element {
@@ -315,7 +326,12 @@ p {
   font-weight: 500;  
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 750px) {
+  .sqs-layout .sqs-row .sqs-block:first-child {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  
   .social-feed-element {
     width: 100%;
     float: none;

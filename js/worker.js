@@ -54,9 +54,10 @@ $(document).ready(function() {
         };
 
         updateFeed();
-        $('#button-update').click(function() {
+        $('#button-update, #button-top').click(function() {
             //first, get rid of old data/posts.
             $('.social-feed-container').html('');
+            $(document).scrollTop(0);
 
             //then load new posts
             updateFeed();
