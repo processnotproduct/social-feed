@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8" />
+    <!-- Social-feed css -->
+    <!-- <link href="../styles/example.css" rel="stylesheet" type="text/css">
+    <link href="../styles/jquery.socialfeed.css" rel="stylesheet" type="text/css"> -->
+    <!-- font-awesome for social network icons -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <!-- <link rel="import" href="../pages/social-template.page"> -->
+</head>
+
+<body>
+    <!-- <section class="intro">
+        <div class="container">
+            <h1>#59in59</h1>
+        </div>
+    </section> -->
+    <section class="stripe">
+        <div class="container field">
+            <input type="text" class="input field-left" value="@59in59, #59in59" id="query">
+            <p>Here's a stream of some of our content on social media that is aggregated using the hashtag #59in59.</p>
+            <button class='button field-right' id="button-update"><i class="fa fa-refresh"></i>
+            </button>
+        </div>
+    </section>
+    <section class="feed">
+        <div class="container">
+            <div class="social-feed-container">
+            </div>
+        </div>
+    </section>
+    <!-- <section class="stripe">
+        <div class="container field referral">
+            <p>If you like <i>59in59</i>, you can support us by Blah BLAH blah</p>
+        </div>
+    </section> -->
+    <!-- jQuery -->
+    <script src="../scripts/jquery.min.js"></script>
+    <!-- Codebird.js - required for TWITTER -->
+    <script src="../scripts/codebird.js"></script>
+    <!-- doT.js for rendering templates -->
+    <script src="../scripts/doT.min.js"></script>
+    <!-- Moment.js for showing "time ago" -->
+    <script src="../scripts/moment.min.js"></script>
+    <!-- Social-feed js -->
+    <script src="../scripts/jquery.socialfeed.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var updateFeed = function() {
+            var initialQuery = $('#query').val();
+            initialQuery = initialQuery.replace(" ", "");
+            var queryTags = initialQuery.split(",");
+            $('.social-feed-container').socialfeed({
+                // FACEBOOK
+                // WILL NEED TO GET ANOTHER ACCESS TOKEN
+                facebook: {
+                    accounts: queryTags,
+                    limit: 10, //Integer: max number of posts to load
+                    access_token: '150849908413827|a20e87978f1ac491a0c4a721c961b68c'
+                },
+                
+                // GOOGLEPLUS 
+                // WILL NEED TO GET ANOTHER ACCESS TOKEN
+                // google: {
+                //     accounts: queryTags,
+                //     limit: 10, //Integer: max number of posts to load
+                //     access_token: 'AIzaSyDAelFmJhg6BSUbSLe8UT7s-G53tL4_KRg'
+                // },
+                
+                // Twitter
+                // WILL NEED TO GET ANOTHER ACCESS TOKEN
+                twitter: {
+                    accounts: queryTags,
+                    limit: 10, //Integer: max number of posts to load
+                    consumer_key: 'qzRXgkI7enflNJH1lWFvujT2P', // make sure to have your app read-only
+                    consumer_secret: '8e7E7gHuTwyDHw9lGQFO73FcUwz9YozT37lEvZulMq8FXaPl8O', // make sure to have your app read-only
+                },
+                
+                // INSTAGRAM
+                // WILL NEED TO GET ANOTHER ACCESS TOKEN
+                instagram: {
+                    accounts: queryTags,
+                    limit: 10, //Integer: max number of posts to load
+                    client_id: '88b4730e0e2c4b2f8a09a6184af2e218'
+                },
+
+                // GENERAL SETTINGS
+                length: 201,
+                show_media: true,
+                // Moderation function - if returns false, template will have class hidden
+                moderation: function(content) {
+                    return (content.text) ? content.text.indexOf('fuck') == -1 : true;
+                },
+                //update_period: 5000,
+                // When all the posts are collected and displayed - this function is evoked
+                callback: function() {
+                    console.log('all posts are collected');
+                }
+            });
+        };
+
+        updateFeed();
+        $('#button-update').click(function() {
+            //first, get rid of old data/posts.
+            $('.social-feed-container').html('');
+
+            //then load new posts
+            updateFeed();
+        });
+
+    });
+    </script>
+</body>
+
+</html>
